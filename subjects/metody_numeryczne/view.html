@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html  dir="ltr" lang="en" xml:lang="en">
+<head>
+    <title>Metody numeryczne: Wymagania formalne</title>
+    <link rel="shortcut icon" href="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/theme/1509445902/favicon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="moodle, Metody numeryczne: Wymagania formalne" />
+<link rel="stylesheet" type="text/css" href="https://kursy.okno.pw.edu.pl/inz/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.css" /><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="https://kursy.okno.pw.edu.pl/inz/theme/styles.php/eduhub/1509445902/all" />
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/kursy.okno.pw.edu.pl\/inz","sesskey":"StRLdlFL0Z","themerev":"1509445902","slasharguments":1,"theme":"eduhub","iconsystemmodule":"core\/icon_system_standard","jsrev":"1509445902","admin":"admin","svgicons":true,"usertimezone":"Europe\/Warsaw","contextid":5892};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/kursy.okno.pw.edu.pl\/inz\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/kursy.okno.pw.edu.pl\/inz\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/kursy.okno.pw.edu.pl\/inz\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/kursy.okno.pw.edu.pl\/inz\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/kursy.okno.pw.edu.pl\/inz\/theme\/yui_combo.php?m\/1509445902\/","combine":true,"comboBase":"https:\/\/kursy.okno.pw.edu.pl\/inz\/theme\/yui_combo.php?","ext":false,"root":"m\/1509445902\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-event":{"requires":["event-custom"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader","moodle-core-event"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-qtype_ddimageortext-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-qtype_ddimageortext-form":{"requires":["moodle-qtype_ddimageortext-dd","form_filepicker"]},"moodle-qtype_ddmarker-dd":{"requires":["node","event-resize","dd","dd-drop","dd-constrain","graphics"]},"moodle-qtype_ddmarker-form":{"requires":["moodle-qtype_ddmarker-dd","form_filepicker","graphics","escape"]},"moodle-qtype_ddwtos-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-randomquestion":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-quizquestionbank":{"requires":["base","event","node","io","io-form","yui-later","moodle-question-qbankmanager","moodle-core-notification-dialogue"]},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-report_overviewstats-charts":{"requires":["base","node","charts","charts-legend"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_wiris-button":{"requires":["moodle-editor_atto-plugin","get"]}}},"gallery":{"name":"gallery","base":"https:\/\/kursy.okno.pw.edu.pl\/inz\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/kursy.okno.pw.edu.pl\/inz\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1509445902\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/kursy.okno.pw.edu.pl\/inz\/lib\/javascript.php\/1509445902\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/kursy.okno.pw.edu.pl\/inz\/lib\/javascript.php\/1509445902\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.1\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/js/whcookies.js"></script>
+<style>
+    
+        
+    
+   @font-face {
+  font-family: 'FontAwesome';
+  src: url('https://kursy.okno.pw.edu.pl/inz/theme/eduhub/font/fontawesome-webfont.eot?v=3.2.1');
+  src: url('https://kursy.okno.pw.edu.pl/inz/theme/eduhub/font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), 
+      url('https://kursy.okno.pw.edu.pl/inz/theme/eduhub/font/fontawesome-webfont.woff?v=3.2.1') 
+      format('woff'), 
+      url('https://kursy.okno.pw.edu.pl/inz/theme/eduhub/font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), 
+      url('https://kursy.okno.pw.edu.pl/inz/theme/eduhub/font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') 
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+    </style>
+    
+</head>
+<body  id="page-mod-page-view" class="format-topics  path-mod path-mod-page safari dir-ltr lang-en yui-skin-sam yui3-skin-sam kursy-okno-pw-edu-pl--inz pagelayout-incourse course-6 context-5892 cmid-339 category-1 has-region-side-pre used-region-side-pre has-region-side-post empty-region-side-post side-pre-only">
+
+<div class="skiplinks">
+    <a href="#maincontent" class="skip">Skip to main content</a>
+</div><script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js"></script><script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/lib/javascript.php/1509445902/lib/javascript-static.js"></script>
+<script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/theme/javascript.php/eduhub/1509445902/head"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<header role="banner" class="navbar  " >
+	<div class="top-header" >
+		<div class="container-fluid" >
+			
+			
+				<table >
+						<tr> 
+							<td>
+								<div class="pull-left" style="padding-right:20px">
+									<a class="logo" href="https://kursy.okno.pw.edu.pl/inz"><img src="//kursy.okno.pw.edu.pl/inz/pluginfile.php/1/theme_eduhub/logo/1509445902/logo_okno_white55.png" alt="logo"/> </a>
+								</div>
+							</td>
+							<td width="100%"  style="padding-left:10px">
+								<a class="brand" href="https://kursy.okno.pw.edu.pl/inz">Platforma edukacyjna studiów inżynierskich OKNO PW</a>
+							</td>
+							<td nowrap>		
+								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></a>											
+								<div class="nav-collapse collapse">
+									
+									
+									<ul class="nav"><li class="dropdown langmenu"><a href="" class="dropdown-toggle" data-toggle="dropdown" title="Language">English ‎(en)‎<b class="caret"></b></a><ul class="dropdown-menu"><li><a title="English ‎(en)‎" href="https://kursy.okno.pw.edu.pl/inz/mod/page/view.php?id=339&amp;lang=en">English ‎(en)‎</a></li><li><a title="Polski ‎(pl)‎" href="https://kursy.okno.pw.edu.pl/inz/mod/page/view.php?id=339&amp;lang=pl">Polski ‎(pl)‎</a></li></ul></ul>								</div>
+							</td>
+						</tr>	
+					</table>
+					<div class="clearfix"></div>
+			
+				
+	
+		</div>	
+	</div>	
+    <div class="top-header">
+            <div class="container-fluid">
+			<table>
+				<tr> 
+					<td>
+						
+					 </td>
+					 <td width="100%">
+						<ul class="nav pull-right">
+							<li></li>
+						
+							<li class="search">
+							 <div class="column">
+							  <div id="sb-search" class="sb-search">
+								<form role="form" class="form-inline" id="demo-1" method="get" 
+								action="https://kursy.okno.pw.edu.pl/inz/course/search.php" id="searchbox_demo">
+								 <input class="sb-search-input" placeholder="Search Courses..." 
+								   type="text" value="" name="search" id="search">
+									<input class="sb-search-submit" type="submit" value="">
+									<span class="sb-icon-search"></span>
+								</form>
+							  </div>
+							 </div>
+							</li>
+						</ul>
+					<div class="usermenu"><div class="moodle-actionmenu nowrap-items" id="action-menu-0" data-enhance="moodle-core-actionmenu">
+
+        <ul class="menubar" id="action-menu-0-menubar" role="menubar">
+
+            <!--
+
+            --><!--
+
+            --><li role="presentation"><a href="#" class="toggle-display textmenu" id="action-menu-toggle-0" title="" role="menuitem"><span class="userbutton"><span class="usertext">Piotr Gregor</span><span class="avatars"><span class="avatar current"><img src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/u/f2" alt="Picture of Piotr Gregor" title="Picture of Piotr Gregor" class="userpicture defaultuserpic" width="35" height="35" role="presentation" /></span></span></span><b class="caret"></b></a>
+</li>
+
+        </ul>
+
+
+        <ul class="menu  align-tr-br" id="action-menu-0-menu" data-rel="menu-content" aria-labelledby="action-menu-toggle-0" role="menu" data-align="tr-br">
+            <li role="presentation">    <a href="https://kursy.okno.pw.edu.pl/inz/my/" class="icon menu-action" role="menuitem" data-title="mymoodle,admin" aria-labelledby="actionmenuaction-1"><img class="icon " alt="Dashboard" title="Dashboard" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/dashboard" /><span class="menu-action-text" id="actionmenuaction-1">Dashboard</span></a>
+
+
+
+
+
+</li><li role="presentation">
+<span class="filler">&nbsp;</span>
+
+
+
+</li><li role="presentation">    <a href="https://kursy.okno.pw.edu.pl/inz/user/profile.php?id=460" class="icon menu-action" role="menuitem" data-title="profile,moodle" aria-labelledby="actionmenuaction-2"><img class="icon " alt="Profile" title="Profile" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/user" /><span class="menu-action-text" id="actionmenuaction-2">Profile</span></a>
+
+
+
+
+
+</li><li role="presentation">    <a href="https://kursy.okno.pw.edu.pl/inz/grade/report/overview/index.php" class="icon menu-action" role="menuitem" data-title="grades,grades" aria-labelledby="actionmenuaction-3"><img class="icon " alt="Grades" title="Grades" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/t/grades" /><span class="menu-action-text" id="actionmenuaction-3">Grades</span></a>
+
+
+
+
+
+</li><li role="presentation">    <a href="https://kursy.okno.pw.edu.pl/inz/message/index.php" class="icon menu-action" role="menuitem" data-title="messages,message" aria-labelledby="actionmenuaction-4"><img class="icon " alt="Messages" title="Messages" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/t/message" /><span class="menu-action-text" id="actionmenuaction-4">Messages</span></a>
+
+
+
+
+
+</li><li role="presentation">    <a href="https://kursy.okno.pw.edu.pl/inz/user/preferences.php" class="icon menu-action" role="menuitem" data-title="preferences,moodle" aria-labelledby="actionmenuaction-5"><img class="icon " alt="Preferences" title="Preferences" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/t/preferences" /><span class="menu-action-text" id="actionmenuaction-5">Preferences</span></a>
+
+
+
+
+
+</li><li role="presentation">
+<span class="filler">&nbsp;</span>
+
+
+
+</li><li role="presentation">    <a href="https://kursy.okno.pw.edu.pl/inz/login/logout.php?sesskey=StRLdlFL0Z" class="icon menu-action" role="menuitem" data-title="logout,moodle" aria-labelledby="actionmenuaction-6"><img class="icon " alt="Log out" title="Log out" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/a/logout" /><span class="menu-action-text" id="actionmenuaction-6">Log out</span></a>
+
+
+
+
+
+</li>
+        </ul>
+</div></div>					<div class="popover-region collapsed popover-region-messages"
+    id="nav-message-popover-container" data-userid="460"
+    data-region="popover-region">
+    <div class="popover-region-toggle nav-link"
+        data-region="popover-region-toggle"
+        aria-role="button"
+        aria-controls="popover-region-container-5a0d673fb48cb5a0d673faa53835"
+        aria-haspopup="true"
+        aria-label="Show message window with no new messages"
+        tabindex="0">
+                <img class="icon " alt="Toggle messages menu" title="Toggle messages menu" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/t/message" />
+        <div class="count-container hidden" data-region="count-container"></div>
+
+    </div>
+    <div 
+        id="popover-region-container-5a0d673fb48cb5a0d673faa53835"
+        class="popover-region-container"
+        data-region="popover-region-container"
+        aria-expanded="false"
+        aria-hidden="true"
+        aria-label="Notification window"
+        role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Messages</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <div class="newmessage-link">
+                <a href="https://kursy.okno.pw.edu.pl/inz/message/index.php?contactsfirst=1">New message
+                </a>
+        </div>
+        <div class="hover-tooltip-container">
+                    <a class="mark-all-read-button"
+                    href="#"
+                    role="button"
+                    title="Mark all as read"
+                    data-action="mark-all-read">
+                    <span class="normal-icon"><img class="icon " alt="Mark all as read" title="Mark all as read" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/t/markasread" /></span>
+                    <span class="loading-icon"><img class="icon " alt="Loading" title="Loading" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/y/loading" /></span>
+                </a>
+
+    <div class="hover-tooltip">
+        Mark all as read
+    </div>
+</div>
+        <div class="hover-tooltip-container">
+                    <a href="https://kursy.okno.pw.edu.pl/inz/message/edit.php?id=460"
+                    title="Message preferences">
+                    <img class="icon " alt="Message preferences" title="Message preferences" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/settings" />
+                </a>
+
+    <div class="hover-tooltip">
+        Message preferences
+    </div>
+</div>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="messages" data-region="messages" role="log" aria-busy="false" aria-atomic="false" aria-relevant="additions"></div>
+        <div class="empty-message" data-region="empty-message" tabindex="0">No messages</div>
+
+            </div>
+            <span class="loading-icon"><img class="icon " alt="Loading" title="Loading" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/y/loading" /></span>
+        </div>
+                <a class="see-all-link"
+                    href="https://kursy.okno.pw.edu.pl/inz/message/index.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">See all</div>
+                    </div>
+                </a>
+    </div>
+</div><div class="popover-region collapsed popover-region-notifications"
+    id="nav-notification-popover-container" data-userid="460"
+    data-region="popover-region">
+    <div class="popover-region-toggle nav-link"
+        data-region="popover-region-toggle"
+        aria-role="button"
+        aria-controls="popover-region-container-5a0d673fb5f8c5a0d673faa53836"
+        aria-haspopup="true"
+        aria-label="Show notification window with no new notifications"
+        tabindex="0">
+                <img class="icon " alt="Toggle notifications menu" title="Toggle notifications menu" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/notifications" />
+        <div class="count-container hidden" data-region="count-container"></div>
+
+    </div>
+    <div 
+        id="popover-region-container-5a0d673fb5f8c5a0d673faa53836"
+        class="popover-region-container"
+        data-region="popover-region-container"
+        aria-expanded="false"
+        aria-hidden="true"
+        aria-label="Notification window"
+        role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Notifications</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <div class="hover-tooltip-container">
+                    <a class="mark-all-read-button"
+                    href="#"
+                    title="Mark all as read"
+                    data-action="mark-all-read"
+                    role="button">
+                    <span class="normal-icon"><img class="icon " alt="Mark all as read" title="Mark all as read" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/t/markasread" /></span>
+                    <span class="loading-icon"><img class="icon " alt="Loading" title="Loading" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/y/loading" /></span>
+                </a>
+
+    <div class="hover-tooltip">
+        Mark all as read
+    </div>
+</div>
+        <div class="hover-tooltip-container">
+                    <a href="https://kursy.okno.pw.edu.pl/inz/message/notificationpreferences.php?userid=460"
+                    title="Notification preferences">
+                    <img class="icon " alt="Notification preferences" title="Notification preferences" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/settings" />
+                </a>
+
+    <div class="hover-tooltip">
+        Notification preferences
+    </div>
+</div>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="all-notifications"
+            data-region="all-notifications"
+            role="log"
+            aria-busy="false"
+            aria-atomic="false"
+            aria-relevant="additions"></div>
+        <div class="empty-message" tabindex="0" data-region="empty-message">You have no notifications</div>
+
+            </div>
+            <span class="loading-icon"><img class="icon " alt="Loading" title="Loading" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/y/loading" /></span>
+        </div>
+                <a class="see-all-link"
+                    href="https://kursy.okno.pw.edu.pl/inz/message/output/popup/notifications.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">See all</div>
+                    </div>
+                </a>
+    </div>
+</div>					</td>
+				</tr>	
+			</table>		
+        </div>
+    </div>  
+</header>
+
+<div id="page">
+    <div class="container-fluid">
+    <div id="page-navbar" class="clearfix">
+            <nav class="breadcrumb-nav"><span class="accesshide" id="navbar-label">Page path</span><nav aria-labelledby="navbar-label"><ul class="breadcrumb"><li><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="https://kursy.okno.pw.edu.pl/inz/my/"><span itemprop="title">Dashboard</span></a></span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span tabindex="0">My courses</span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" title="Metody numeryczne" href="https://kursy.okno.pw.edu.pl/inz/course/view.php?id=6"><span itemprop="title">Metody numeryczne</span></a></span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span tabindex="0">Projekt zaliczeniowy</span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" title="Page" href="https://kursy.okno.pw.edu.pl/inz/mod/page/view.php?id=339"><span itemprop="title">Wymagania formalne</span></a></span></li></ul></nav></nav>
+            <div class="breadcrumb-button"></div>
+        </div>
+        </div>
+    
+    <div id="page-content" class="row-fluid">
+        <div class="container-fluid">
+        <div id="region-main-box" class="span9">
+            <div class="row-fluid">
+                <section id="region-main" class="span8 pull-right">
+                    <span class="notifications" id="user-notifications"></span><div role="main"><span id="maincontent"></span><h2>Wymagania formalne</h2><div class="box generalbox center clearfix"><div class="no-overflow"><p><p>Projekt powinien obejmować następujące części:</p><ol><li>Implementację zadania numerycznego (rozwiązanie problemu technicznego zawierającego&nbsp;opis &nbsp;modelu matematycznego).</li><li>Przeprowadzenie testów rozwiązania - weryfikacja rozwiązania (zaproponowana przez studenta metodyka).</li><li>Napisanie raportu obejmującego:<ol><li>opis modelu matematycznego,</li><li>opis modelu&nbsp;numerycznego,</li><li>opis implementacji,</li><li>raport wyników eksperymentu z weryfikacją rozwiązania,</li></ol></li></ol><p>Od strony formalnej powstać powinno kilka plików:</p><ol><li>pliki z kodem&nbsp;źródłowym osobno do każdej części projektu,</li><li>plik z raportem (preferowany dokument w formacie PDF).</li></ol><p>Więcej&nbsp;szczegółów znajduje się w załączonym dokumencie z opisem projektu.</p><p>Projekt zaliczeniowy (WSZYSCY ROBIĄ TEN SAM PROJEKT)</p><br><br></p></div></div><div class="modified">Last modified: Saturday, 21 October 2017, 9:28 AM</div></div>                </section>
+                <aside id="block-region-side-pre" class="span4 desktop-first-column block-region" data-blockregion="side-pre" data-droptarget="1"><a class="skip skip-block" id="fsb-1" href="#sb-1">Skip Navigation</a><div id="inst16" class="block_navigation  block" role="navigation" data-block="navigation" data-instanceid="16" aria-labelledby="instance-16-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><h2 id="instance-16-header">Navigation</h2></div></div><div class="content"><ul class="block_tree list" role="tree" data-ajax-loader="block_navigation/nav_loader"><li class="type_unknown depth_1 contains_branch" aria-labelledby="label_1_1"><p class="tree_item branch navigation_node" role="treeitem" aria-expanded="true" aria-owns="random5a0d673faa5381_group" data-collapsible="false"><a tabindex="-1" id="label_1_1" href="https://kursy.okno.pw.edu.pl/inz/my/">Dashboard</a></p><ul id="random5a0d673faa5381_group" role="group"><li class="type_setting depth_2 item_with_icon" aria-labelledby="label_2_2"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_2_2" href="https://kursy.okno.pw.edu.pl/inz/?redirect=0"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Site home</span></a></p></li><li class="type_course depth_2 contains_branch" aria-labelledby="label_2_3"><p class="tree_item branch" role="treeitem" aria-expanded="false" aria-owns="random5a0d673faa5383_group"><span tabindex="-1" id="label_2_3" title="Platforma edukacyjna studiów inżynierskich OKNO PW">Site pages</span></p><ul id="random5a0d673faa5383_group" role="group" aria-hidden="true"><li class="type_unknown depth_3 item_with_icon" aria-labelledby="label_3_5"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_5" href="https://kursy.okno.pw.edu.pl/inz/blog/index.php"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Site blogs</span></a></p></li><li class="type_custom depth_3 item_with_icon" aria-labelledby="label_3_6"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_6" href="https://kursy.okno.pw.edu.pl/inz/badges/view.php?type=1"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Site badges</span></a></p></li><li class="type_setting depth_3 item_with_icon" aria-labelledby="label_3_7"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_7" href="https://kursy.okno.pw.edu.pl/inz/tag/search.php"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Tags</span></a></p></li><li class="type_custom depth_3 item_with_icon" aria-labelledby="label_3_8"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_8" href="https://kursy.okno.pw.edu.pl/inz/calendar/view.php?view=month"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Calendar</span></a></p></li><li class="type_activity depth_3 item_with_icon" aria-labelledby="label_3_10"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_10" title="Forum" href="https://kursy.okno.pw.edu.pl/inz/mod/forum/view.php?id=272"><img class="icon navicon" alt="Forum" title="Forum" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/forum/1509445902/icon" /><span class="item-content-wrap">Aktualności</span></a></p></li><li class="type_activity depth_3 item_with_icon" aria-labelledby="label_3_12"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_12" title="Page" href="https://kursy.okno.pw.edu.pl/inz/mod/page/view.php?id=260"><img class="icon navicon" alt="Page" title="Page" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/page/1509445902/icon" /><span class="item-content-wrap">Informacje dotyczące logowania na platformie eduka...</span></a></p></li><li class="type_activity depth_3 item_with_icon" aria-labelledby="label_3_13"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_3_13" title="Page" href="https://kursy.okno.pw.edu.pl/inz/mod/page/view.php?id=261"><img class="icon navicon" alt="Page" title="Page" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/page/1509445902/icon" /><span class="item-content-wrap">Zapisy do programu DreamSpark</span></a></p></li></ul></li><li class="type_system depth_2 contains_branch" aria-labelledby="label_2_15"><p class="tree_item branch canexpand" role="treeitem" aria-expanded="true" aria-owns="random5a0d673faa53811_group"><span tabindex="-1" id="label_2_15">My courses</span></p><ul id="random5a0d673faa53811_group" role="group"><li class="type_course depth_3 contains_branch" aria-labelledby="label_3_16"><p class="tree_item branch canexpand" role="treeitem" aria-expanded="true" aria-owns="random5a0d673faa53812_group"><a tabindex="-1" id="label_3_16" title="Metody numeryczne" href="https://kursy.okno.pw.edu.pl/inz/course/view.php?id=6">Metody numeryczne</a></p><ul id="random5a0d673faa53812_group" role="group"><li class="type_unknown depth_4 contains_branch" aria-labelledby="label_4_17"><p class="tree_item branch" role="treeitem" aria-expanded="false" aria-owns="random5a0d673faa53813_group"><a tabindex="-1" id="label_4_17" href="https://kursy.okno.pw.edu.pl/inz/user/index.php?id=6">Participants</a></p><ul id="random5a0d673faa53813_group" role="group" aria-hidden="true"><li class="type_setting depth_5 item_with_icon" aria-labelledby="label_5_18"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_5_18" href="https://kursy.okno.pw.edu.pl/inz/blog/index.php?courseid=6"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Course blogs</span></a></p></li><li class="type_user depth_5 item_with_icon" aria-labelledby="label_5_19"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_5_19" href="https://kursy.okno.pw.edu.pl/inz/user/view.php?id=460&amp;course=6"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/navigationitem" /><span class="item-content-wrap">Piotr Gregor</span></a></p></li></ul></li><li class="type_setting depth_4 item_with_icon" aria-labelledby="label_4_20"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_4_20" href="https://kursy.okno.pw.edu.pl/inz/badges/view.php?type=2&amp;id=6"><img class="icon navicon" alt="Badges" title="Badges" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/badge" /><span class="item-content-wrap">Badges</span></a></p></li><li class="type_setting depth_4 item_with_icon" aria-labelledby="label_4_21"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_4_21" href="https://kursy.okno.pw.edu.pl/inz/admin/tool/lp/coursecompetencies.php?courseid=6"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/competencies" /><span class="item-content-wrap">Competencies</span></a></p></li><li class="type_setting depth_4 item_with_icon" aria-labelledby="label_4_22"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_4_22" href="https://kursy.okno.pw.edu.pl/inz/grade/report/index.php?id=6"><img class="icon navicon" alt="" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/i/grades" /><span class="item-content-wrap">Grades</span></a></p></li><li class="type_structure depth_4 contains_branch" aria-labelledby="label_4_23"><p class="tree_item branch" role="treeitem" id="expandable_branch_30_12" aria-expanded="false" data-requires-ajax="true" data-loaded="false" data-node-id="expandable_branch_30_12" data-node-key="12" data-node-type="30"><span tabindex="-1" id="label_4_23">General</span></p></li><li class="type_structure depth_4 contains_branch" aria-labelledby="label_4_24"><p class="tree_item branch" role="treeitem" id="expandable_branch_30_13" aria-expanded="false" data-requires-ajax="true" data-loaded="false" data-node-id="expandable_branch_30_13" data-node-key="13" data-node-type="30"><span tabindex="-1" id="label_4_24">Pliki dla studentów</span></p></li><li class="type_structure depth_4 contains_branch" aria-labelledby="label_4_25"><p class="tree_item branch" role="treeitem" aria-expanded="true" aria-owns="random5a0d673faa53819_group"><span tabindex="-1" id="label_4_25">Projekt zaliczeniowy</span></p><ul id="random5a0d673faa53819_group" role="group"><li class="type_activity depth_5 item_with_icon current_branch" aria-labelledby="label_5_26"><p class="tree_item hasicon active_tree_node" role="treeitem"><a tabindex="-1" id="label_5_26" title="Page" href="https://kursy.okno.pw.edu.pl/inz/mod/page/view.php?id=339"><img class="icon navicon" alt="Page" title="Page" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/page/1509445902/icon" /><span class="item-content-wrap">Wymagania formalne</span></a></p></li><li class="type_activity depth_5 item_with_icon" aria-labelledby="label_5_27"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_5_27" title="File" href="https://kursy.okno.pw.edu.pl/inz/mod/resource/view.php?id=343"><img class="icon navicon" alt="File" title="File" src="https://kursy.okno.pw.edu.pl/inz/theme/image.php/eduhub/core/1509445902/f/pdf-24" /><span class="item-content-wrap">Opis merytoryczny projektu zaliczeniowego</span></a></p></li></ul></li><li class="type_structure depth_4 contains_branch" aria-labelledby="label_4_28"><p class="tree_item branch" role="treeitem" id="expandable_branch_30_95" aria-expanded="false" data-requires-ajax="true" data-loaded="false" data-node-id="expandable_branch_30_95" data-node-key="95" data-node-type="30"><span tabindex="-1" id="label_4_28">Zajęcia stacjonarne</span></p></li></ul></li><li class="type_course depth_3 contains_branch" aria-labelledby="label_3_29"><p class="tree_item branch" role="treeitem" id="expandable_branch_20_10" aria-expanded="false" data-requires-ajax="true" data-loaded="false" data-node-id="expandable_branch_20_10" data-node-key="10" data-node-type="20"><a tabindex="-1" id="label_3_29" title="Systemy operacyjne" href="https://kursy.okno.pw.edu.pl/inz/course/view.php?id=10">Systemy operacyjne</a></p></li><li class="type_course depth_3 contains_branch" aria-labelledby="label_3_30"><p class="tree_item branch" role="treeitem" id="expandable_branch_20_8" aria-expanded="false" data-requires-ajax="true" data-loaded="false" data-node-id="expandable_branch_20_8" data-node-key="8" data-node-type="20"><a tabindex="-1" id="label_3_30" title="Podstawy elektrotechniki i elektroniki" href="https://kursy.okno.pw.edu.pl/inz/course/view.php?id=8">Podstawy elektrotechniki i elektroniki</a></p></li></ul></li></ul></li></ul></div></div><span class="skip-block-to" id="sb-1"></span></aside>            </div>
+        </div>
+        <aside id="block-region-side-post" class="span3 pull-right block-region" data-blockregion="side-post" data-droptarget="1"></aside>    </div>
+    </div>
+
+    <div class="top-footer row-fluid">
+     <div class="container-fluid">
+	    <div class="span6">
+			<h4 class="blue">OKNO PW</h4>
+			<p>
+				<div class="footnote text-center"><div class="text_to_html"><table><tbody><tr><td><a href="http://www.okno.pw.edu.pl"><img src="https://kursy.okno.pw.edu.pl/inz/pix/logo_okno.png" alt="" width="190" height="55" class="img-responsive atto_image_button_text-bottom" /></a></td><td align="left">Platforma utrzymywana i serwisowana przez Ośrodek Kształcenia na Odległość OKNO PW<br /><a href="http://www.okno.pw.edu.pl"> Więcej informacji »</a></td></tr><tr><td colspan="2" align="left"><h5>Informacje dodatkowe - OKNO PW</h5><i class="fa fa-external-link-square"></i> <a href="https://learn.okno.pw.edu.pl" target="_blank" rel="noreferrer">Platforma edukacyjna BlackBoard</a>   <i class="fa fa-book"></i> <a href="https://red.okno.pw.edu.pl" target="_blank" rel="noreferrer">Platforma administracyjna SAS</a>    <i class="fa fa-cloud"></i> <a href="https://cloud.okno.pw.edu.pl" target="_blank" rel="noreferrer">OKNOCloud</a>     <i class="fa fa-life-ring"></i> <a href="https://www.okno.pw.edu.pl/pomoc/" target="_blank" rel="noreferrer">Pomoc</a></td></tr></tbody></table><br /></div></div>			
+			</p>		
+		</div>
+		 <div class="span4">
+          <div class="contact-info">
+            <h4 class="blue">KONTAKT</h4>
+			Ośrodek Kształcenia na Odległość OKNO PW<br>
+		    <i class="fa fa-map-marker "></i>&nbsp;&nbsp;00-661 Warszawa, Plac Politechniki 1, Gmach Główny <br>			
+			<p>
+				<i class="fa fa-phone"></i>&nbsp;&nbsp;+48 (22) 234-57-84<br>
+				<i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Studia inżynierskie:&nbsp;<a class="mail-link" href="mailto:inzynierskie@okno.pw.edu.pl">inzynierskie@okno.pw.edu.pl</a><br>
+				<i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Studia magisterskie:&nbsp;<a class="mail-link" href="mailto:magisterskie@okno.pw.edu.pl">magisterskie@okno.pw.edu.pl</a><br>
+				<i class="fa fa-info-circle"></i>&nbsp;&nbsp;Pomoc i wsparcie:&nbsp;<a class="mail-link" href="mailto:pomoc@okno.pw.edu.pl">pomoc@okno.pw.edu.pl</a>
+			</p>
+			</div>
+        </div>
+		<div class="clearfix"></div>
+		<div class="ftr-copyright">
+        <p class="copy">Copyright &copy; 2017 Ośrodek Kształcenia na Odległość OKNO Politechniki Warszawskiej</p>     </div>
+	 <br>
+	 </div>
+    <script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://kursy.okno.pw.edu.pl/inz/lib/requirejs.php/1509445902/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://kursy.okno.pw.edu.pl/inz/lib/javascript.php/1509445902/lib/jquery/jquery-3.1.0.min',
+        jqueryui: 'https://kursy.okno.pw.edu.pl/inz/lib/javascript.php/1509445902/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://kursy.okno.pw.edu.pl/inz/lib/javascript.php/1509445902/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/lib/javascript.php/1509445902/lib/requirejs/require.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://kursy.okno.pw.edu.pl/inz/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("en",{
+ "Play": "Play",
+ "Pause": "Pause",
+ "Current Time": "Current Time",
+ "Duration Time": "Duration Time",
+ "Remaining Time": "Remaining Time",
+ "Stream Type": "Stream Type",
+ "LIVE": "LIVE",
+ "Loaded": "Loaded",
+ "Progress": "Progress",
+ "Fullscreen": "Fullscreen",
+ "Non-Fullscreen": "Non-Fullscreen",
+ "Mute": "Mute",
+ "Unmute": "Unmute",
+ "Playback Rate": "Playback Rate",
+ "Subtitles": "Subtitles",
+ "subtitles off": "subtitles off",
+ "Captions": "Captions",
+ "captions off": "captions off",
+ "Chapters": "Chapters",
+ "Close Modal Dialog": "Close Modal Dialog",
+ "Descriptions": "Descriptions",
+ "descriptions off": "descriptions off",
+ "Audio Track": "Audio Track",
+ "You aborted the media playback": "You aborted the media playback",
+ "A network error caused the media download to fail part-way.": "A network error caused the media download to fail part-way.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "The media could not be loaded, either because the server or network failed or because the format is not supported.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.",
+ "No compatible source was found for this media.": "No compatible source was found for this media.",
+ "The media is encrypted and we do not have the keys to decrypt it.": "The media is encrypted and we do not have the keys to decrypt it.",
+ "Play Video": "Play Video",
+ "Close": "Close",
+ "Modal Window": "Modal Window",
+ "This is a modal window": "This is a modal window",
+ "This modal can be closed by pressing the Escape key or activating the close button.": "This modal can be closed by pressing the Escape key or activating the close button.",
+ ", opens captions settings dialog": ", opens captions settings dialog",
+ ", opens subtitles settings dialog": ", opens subtitles settings dialog",
+ ", opens descriptions settings dialog": ", opens descriptions settings dialog",
+ ", selected": ", selected"
+});
+
+    });
+});;
+require(["block_navigation/navblock"], function(amd) { amd.init("16"); });;
+require(["block_settings/settingsblock"], function(amd) { amd.init("17", null); });;
+
+require(['core/yui'], function(Y) {
+    M.util.init_skiplink(Y);
+});
+;
+
+require(['jquery'], function($) {
+    $('#single_select5a0d673faa53824').change(function() {
+        $('#single_select_f5a0d673faa53823').submit();
+    });
+});
+;
+
+require(['jquery'], function($) {
+    $('#single_select5a0d673faa53826').change(function() {
+        $('#single_select_f5a0d673faa53825').submit();
+    });
+});
+;
+
+require(['core/yui'], function(Y) {
+    Y.use('moodle-core-actionmenu', function() {
+        M.core.actionmenu.init();
+    });
+});
+;
+
+require(['jquery', 'message_popup/message_popover_controller'], function($, controller) {
+    var container = $('#nav-message-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+require(['jquery', 'message_popup/notification_popover_controller'], function($, controller) {
+    var container = $('#nav-notification-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+require(["core/notification"], function(amd) { amd.init(5892, []); });;
+require(["core/log"], function(amd) { amd.setConfig({"level":"warn"}); });
+});
+//]]>
+</script>
+<script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/lib/javascript.php/1509445902/theme/eduhub/yui/bttotop.js"></script>
+<script type="text/javascript" src="https://kursy.okno.pw.edu.pl/inz/theme/javascript.php/eduhub/1509445902/footer"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","yes":"Yes","no":"No","viewallcourses":"View all courses","cancel":"Cancel","morehelp":"More help","loadinghelp":"Loading...","confirm":"Confirm","areyousure":"Are you sure?","closebuttontitle":"Close","unknownerror":"Unknown error"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"admin":{"confirmdeletecomments":"You are about to delete comments, are you sure?","confirmation":"Confirmation"},"block":{"addtodock":"Move this to the dock","undockitem":"Undock this item","dockblock":"Dock {$a} block","undockblock":"Undock {$a} block","undockall":"Undock all","hidedockpanel":"Hide the dock panel","hidepanel":"Hide panel"},"langconfig":{"thisdirectionvertical":"btt"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-core-dock-loader",function() {M.core.dock.loader.initLoader();
+});
+Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\n\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"en"});
+});
+M.util.help_popups.setup(Y);
+Y.use("moodle-core-popuphelp",function() {M.core.init_popuphelp();
+});
+M.util.init_block_hider(Y, {"id":"inst16","title":"Navigation","preference":"block16hidden","tooltipVisible":"Hide Navigation block","tooltipHidden":"Show Navigation block"});
+ M.util.js_pending('random5a0d673faa53838'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5a0d673faa53838'); });
+})();
+//]]>
+</script>
+<div id="back-to-top" style="display: none;"> 
+    <a class="arrow" href="#" title="Back to top"><i class="fa fa-arrow-up"></i></a> 
+</div>
+</div>
+
+<script type="text/javascript">
+    $(function(){      
+$('h3.blue').each(function(){
+    var text = $(this).text().split(' ');
+    if(text.length < 2)
+        return;
+    text[0] = '<span class="coursenam-blue">'+text[0]+'</span>';
+    $(this).html( text.join(' ') );
+});        
+   });
+    
+//$( "div#frontpage-course-list > h2" ).addClass( "all" );
+$("div.frontpage-course-list-all").prev().addClass( "all" );    
+var elements = document.getElementsByClassName('all');
+for(var i=0; i<elements.length; i++){
+    if(elements[i].innerHTML == 'Available courses'){
+    elements[i].innerHTML = "All Courses";
+        break;
+    }   
+ }     
+  $( "div.frontpage-course-list-all" ).addClass( "clearfix" );
+$( ".block > .content" ).addClass( "clearfix" );        
+    </script>
+    <script>
+			new UISearch( document.getElementById( 'sb-search' ) );
+		</script>
+    <script>
+ (function($){
+$(function(){
+        var frontpageCourseListAll = $('.frontpage-course-list-all');
+        var totalPageWidth = $(frontpageCourseListAll).width();
+        var contentBoxWidth = frontpageCourseListAll.find('.coursebox:first').outerWidth(true);
+        var allBoxes = frontpageCourseListAll.find('.coursebox');
+        var totalBoxes = allBoxes.length;
+        var boxesPerRow = Math.floor(totalPageWidth / contentBoxWidth);
+        var temp2, temp3, shadowPAGE=$('<div class="shadow-frontpage-course-list-all"></div>');
+        for (temp2=0; temp2<boxesPerRow; temp2++) {
+                shadowPAGE.append('<div class="content-column content-column-'+ temp2 +'"></div>');
+        }
+        for (temp2=0, temp3=0; temp2<totalBoxes; temp2++, temp3=(temp3<(boxesPerRow-1)?temp3+1:0)) {
+                shadowPAGE.find('.content-column-'+temp3).append($(allBoxes[temp2]).clone());
+        }
+        shadowPAGE.append('<div class="clear"></div>');
+        frontpageCourseListAll.html(shadowPAGE);
+});
+
+}(jQuery));
+    </script>
+
+</body>
+</html>

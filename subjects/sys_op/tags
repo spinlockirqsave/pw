@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+MAX	zad2.c	26;"	d	file:
+calc_integral_in_range	zad2.c	/^void* calc_integral_in_range(void *integral_ctx)$/;"	f
+calc_integral_task	zad2.c	/^void* calc_integral_task(void *integral_arg)$/;"	f
+calka	zad2.c	/^double calka[MAX];$/;"	v
+from	zad2.c	/^	double from;		\/* beginning of the integration range *\/$/;"	m	struct:integral_data	file:
+fun	zad2.c	/^double fun(double arg) {$/;"	f
+handle_signals	zad2.c	/^int	handle_signals = 1;$/;"	v
+idx	zad2.c	/^	int idx;			\/* thread's index in tid table*\/$/;"	m	struct:integral_data	file:
+integral_arg	zad2.c	/^struct integral_arg {$/;"	s	file:
+integral_data	zad2.c	/^struct integral_data {	\/* integral context per each thread *\/$/;"	s	file:
+integral_estimate	zad2.c	/^	double integral_estimate;	\/* estimation of integral in given range, NOTE: no need to protect with mutex - only producer accesses this before the main thred controller accesses it to sum up the integration results from all the threads. In other words - access is synchronised between all threads. *\/$/;"	m	struct:integral_data	file:
+main	zad2.c	/^main(int argc, char *argv[])$/;"	f
+range	zad2.c	/^	struct integral_data range;$/;"	m	struct:integral_arg	typeref:struct:integral_arg::integral_data	file:
+rozmiar	zad2.c	/^double rozmiar;$/;"	v
+signal_handler_task	zad2.c	/^void* signal_handler_task(void* arg)$/;"	f
+signals_mutex	zad2.c	/^pthread_mutex_t	signals_mutex;$/;"	v
+thread_n	zad2.c	/^	int thread_n;		\/* number of threads to create *\/$/;"	m	struct:integral_arg	file:
+to	zad2.c	/^	double to;			\/* the end of the integration range *\/$/;"	m	struct:integral_data	file:
+zakres	zad2.c	/^double zakres[MAX];$/;"	v
